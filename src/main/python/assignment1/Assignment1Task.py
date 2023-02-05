@@ -89,10 +89,7 @@ class Assignment1Task(object):
                 logger.warning("~~~~~~~~~~~~~~~~ Error for html query %s: %s", object_summary.key, e.response)
                 continue
 
-def main():
-    print("In main")
-    at1 = Assignment1Task()
-    at1.run()
 
-if __name__=="__main__":
-    main()
+if __name__ == "__main__":
+    a1t = Assignment1Task()
+    a1t.run()
