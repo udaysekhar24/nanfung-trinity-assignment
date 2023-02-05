@@ -44,6 +44,3 @@ encouraged to make use of AWS services such as EMR and S3 to complete the task.
 scripts. Please include sufficient comments in your code and test cases to handle edge
 cases.
 5. There will be a debrief session after the exercise.
-
-Thank you for your time and feel free to reach out our HR representative if you do have any
-question.
