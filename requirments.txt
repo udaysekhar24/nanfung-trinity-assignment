@@ -6,3 +6,4 @@ dotenv
 fsspec
 s3fs
 pandas
+pytest
