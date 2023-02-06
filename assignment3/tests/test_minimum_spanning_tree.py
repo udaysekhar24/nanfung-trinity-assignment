@@ -27,18 +27,6 @@ class TestMinimumSpanningTree:
             mst_obj.graph = input_graph
             mst, cost = mst_obj.prims_algorithm()
 
-    def test_prims_algorithm_fail4(self):
-        # success scenario: test for cost with -ve weights
-        with pytest.raises(ValueError):
-            input_graph = [[0, 2, 0, -6, 0],
-                           [2, 0, 3, 8, 5],
-                           [0, 3, 0, 0, 7],
-                           [6, 8, 0, 0, 9],
-                           [0, 5, 7, 9, 0]]
-            mst_obj = MinimumSpanningTree.UndirectedWeightedGraph(5)
-            mst_obj.graph = input_graph
-            mst, cost = mst_obj.prims_algorithm()
-
     def test_prims_algorithm_success1(self):
         # success scenario: test for cost
         input_graph = [[0, 2, 0, 6, 0],
@@ -76,6 +64,25 @@ class TestMinimumSpanningTree:
         mst_obj.graph = input_graph
         mst, cost = mst_obj.prims_algorithm()
         assert cost == 0
+
+    def test_prims_algorithm_success4(self):
+        # success scenario: test for cost with -ve weights
+        input_graph = [[0, 2, 0, -6, 0],
+                       [2, 0, 3, 8, 5],
+                       [0, 3, 0, 0, 7],
+                       [-6, 8, 0, 0, 9],
+                       [0, 5, 7, 9, 0]]
+        expected_graph = [[0, 2, 0, -6, 0],
+                          [2, 0, 3, 0, 5],
+                          [0, 3, 0, 0, 0],
+                          [-6, 0, 0, 0, 0],
+                          [0, 5, 0, 0, 0]]
+        mst_obj = MinimumSpanningTree.UndirectedWeightedGraph(5)
+        mst_obj.graph = input_graph
+        mst, cost = mst_obj.prims_algorithm()
+        assert cost == 4
+        compare_result = np.allclose(mst, expected_graph)
+        assert compare_result
 
 
 if __name__ == '__main__':

@@ -38,46 +38,43 @@ class UndirectedWeightedGraph:
     ###
     def prims_algorithm(self):
         if self.graph and np.sum(self.graph) != 0:
-            negative_wt_flag = np.any(np.asarray(self.graph) < 0)
-            if not negative_wt_flag:
-                inf = float('inf')
-                # For storing traversed vertices
-                vertices_traversed = np.full(self.vertex_count, False, dtype=bool)
+            inf = float('inf')
+            # For storing traversed vertices
+            vertices_traversed = np.full(self.vertex_count, False, dtype=bool)
 
-                # Result mst & cost
-                mst = np.zeros((self.vertex_count, self.vertex_count), dtype=int)
-                traversal_cost = 0
+            # Result mst & cost
+            mst = np.zeros((self.vertex_count, self.vertex_count), dtype=int)
+            traversal_cost = 0
 
-                while False in vertices_traversed:
-                    min_cost = inf
-                    start_vertex = 0
-                    end_vertex = 0
+            while False in vertices_traversed:
+                min_cost = inf
+                start_vertex = 0
+                end_vertex = 0
 
-                    for row in range(self.vertex_count):
-                        # If vertex is traversed, look its connections
-                        if vertices_traversed[row]:
-                            # Find the min_cost to traverse to next non-traversed vertex
-                            for col in range(self.vertex_count):
-                                if not vertices_traversed[col] and self.graph[row][col] > 0:
-                                    if self.graph[row][col] < min_cost:
-                                        min_cost = self.graph[row][col]
-                                        start_vertex, end_vertex = row, col
+                for row in range(self.vertex_count):
+                    # If vertex is traversed, look its connections
+                    if vertices_traversed[row]:
+                        # Find the min_cost to traverse to next non-traversed vertex
+                        for col in range(self.vertex_count):
+                            if not vertices_traversed[col] and self.graph[row][col] != 0:
+                                if self.graph[row][col] < min_cost:
+                                    min_cost = self.graph[row][col]
+                                    start_vertex, end_vertex = row, col
 
-                    # Add vertex to traversed vertices
-                    vertices_traversed[end_vertex] = True
+                # Add vertex to traversed vertices
+                vertices_traversed[end_vertex] = True
 
-                    # update cost in mst
-                    if min_cost == inf:
-                        mst[start_vertex][end_vertex] = 0
-                    else:
-                        mst[start_vertex][end_vertex] = min_cost
-                        traversal_cost = traversal_cost + min_cost
+                # update cost in mst
+                if min_cost == inf:
+                    mst[start_vertex][end_vertex] = 0
+                else:
+                    mst[start_vertex][end_vertex] = min_cost
+                    traversal_cost = traversal_cost + min_cost
 
-                    mst[end_vertex][start_vertex] = mst[start_vertex][end_vertex]
-                return mst, traversal_cost
-            else:
-                raise ValueError("This program currently supports only positive weights")
+                mst[end_vertex][start_vertex] = mst[start_vertex][end_vertex]
+            return mst, traversal_cost
         else:
-            raise ValueError("Input graph should be non None and have valid weights(>0)")
+            raise ValueError("Input graph should be non None and sum(weights) != 0")
+
 
 
