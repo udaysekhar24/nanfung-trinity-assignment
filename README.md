@@ -69,6 +69,8 @@ Note: replace text with `<>` to actual values
 
    `s3_bucket_name = 'ext-candidate-data'`
 9. Run `py -m pytest`
+10. Run `deactivate`
+11. Output files are stored in `processed` folder
 
 ### **Assignment 1 Design** <br>
 * Assumptions:
