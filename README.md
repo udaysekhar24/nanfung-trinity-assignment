@@ -69,6 +69,8 @@ Note: replace text with `<>` to actual values
 
    `s3_bucket_name = 'ext-candidate-data'`
 9. Run `py -m pytest`
+10. Run `deactivate`
+11. Output files are stored in `processed` folder
 
 ### **Assignment 1 Design** <br>
 * Assumptions:
@@ -85,6 +87,7 @@ Note: replace text with `<>` to actual values
     * I did not have write permissions for s3 bucket provided hence, storing processed file to disk. But, code to upload to s3 is available but commented
 * Output dir path: `process/products/<date>`
 * Output formats supported: `csv` or `parquet`
+* For daily cadence schedule below command. As processed files are stored by date there is no problem of overwrite. 
 * _For PRODUCTION:_ `py assignment.Assignement2Task env=PROD format=csv`
 
 ![assignment2_design.JPG](docs%2Fassignment1_design.JPG)
