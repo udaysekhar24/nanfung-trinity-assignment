@@ -58,16 +58,17 @@ Note: replace text with `<>` to actual values
     `py -v venv assignment_venv`
 4. Load virtual environment
     `assignment_venv\Scripts\activate`
-5. Run `pip install -r requirements.txt`
-6. Create .env file in root folder  
-7. In .env paste below lines and save
+5. Run `py -m pip install --upgrade pip`
+6. Run `pip install -r requirements.txt`
+7. Create .env file in root dir of this project  
+8. In .env paste below lines and save
 
    `aws_access_key = '<aws-access-key>'`
 
    `aws_secret_key = '<aws-secret-key>'`
 
    `s3_bucket_name = 'ext-candidate-data'`
-8. Run `py -m pytest`
+9. Run `py -m pytest`
 
 ### **Assignment 1 Design** <br>
 * Assumptions:
