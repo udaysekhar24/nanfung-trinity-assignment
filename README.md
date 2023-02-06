@@ -1,6 +1,6 @@
 # nanfung-trinity-assignment
 
-**Questions**
+### **Questions**
 1. Build an ETL pipeline that reads the raw data in S3, extract the key data points, and
 save the final data (You can save it anywhere, can be your own S3 bucket). The data
 which is provided to you is the raw html extracted from a job posting website. The
@@ -33,7 +33,7 @@ evicts elements from the cache to make room for new elements when the cache is
 full. It discards the least recently used items first. Please submit the code with
 sufficient comments.
 
-**Requirement**
+### **Requirement**
 1. Python is strongly preferred for implementation.
 2. Please include documentation that will allow us to set up the environment with the
 required dependencies to run the code successfully on our side. Your code is expected
@@ -45,28 +45,31 @@ scripts. Please include sufficient comments in your code and test cases to handl
 cases.
 5. There will be a debrief session after the exercise.
 
-**Execution steps**
+### **Execution steps**
 
 Prerequisites
 * Python 3
 * pip
 
+Note: replace text with `<>` to actual values
 1. Download and unzip the assignment.zip folder 
 2. Run `cd <path-to-assignment-folder>`
 3. Create a virtual environment using cmd
-    `py -v venv assignment`
+    `py -v venv assignment_venv`
 4. Load virtual environment
-    `assignment\Scripts\activate`
+    `assignment_venv\Scripts\activate`
 5. Run `pip install -r requirements.txt`
 6. Create .env file in root folder  
 7. In .env paste below lines and save
 
    `aws_access_key = '<aws-access-key>'`
-   `aws_secret_key = '<aws-secret-key>'`
-   `s3_bucket_name = 'ext-candidate-data'`
-8. Run `py -m pytest -W ignore::DeprecationWarning`
 
-**Assignment 1 Design** <br>
+   `aws_secret_key = '<aws-secret-key>'`
+
+   `s3_bucket_name = 'ext-candidate-data'`
+8. Run `py -m pytest`
+
+### **Assignment 1 Design** <br>
 * Assumptions:
     * For dev/test, I have restricted to `3` files.
     * I did not have write permissions for s3 bucket provided hence, storing processed file to disk. But, code to upload to s3 is available but commented
@@ -76,7 +79,7 @@ Prerequisites
 
 ![assignment1_design.JPG](docs%2Fassignment1_design.JPG)
 
-**Assignment 2 Design** <br>
+### **Assignment 2 Design** <br>
 * Assumptions:
     * I did not have write permissions for s3 bucket provided hence, storing processed file to disk. But, code to upload to s3 is available but commented
 * Output dir path: `process/products/<date>`
@@ -94,7 +97,7 @@ There are many ways to solve for minimum spanning tree
 
 For this assignment I choose to implement using Prim's Algorithm
 
-### **Prim's algorithm logic:**
+#### **Prim's algorithm logic:**
 
 1. Choose any vertex as source
 2. Find the minimum weight edge for traversal to next vertex such that there are no cycles and add it to tree.
@@ -109,7 +112,7 @@ Output:
 * mst: minimum spanning tree as adjacency matrix
 * traversl_cost: cost of traversing all the vertices
 
-**Assignment 4: LRU Cache**
+### **Assignment 4: LRU Cache**
 
 
 LRU Cache can be implemented using a dict(cache) and DoublyLinkedList(DLL)
@@ -134,4 +137,4 @@ put(key, content):
 
 **Testing summary results**
 
-![assignment_testcase_summary.JPG](..%2F..%2FDownloads%2Fassignment_testcase_summary.JPG)
+![assignment_testcase_summary.JPG](docs%2Fassignment_testcase_summary.JPG)

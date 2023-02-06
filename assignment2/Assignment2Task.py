@@ -122,5 +122,8 @@ class Assignment2Task:
                 logger.warning("Failed for page start " + str(start) + str(e.__str__()))
 
 
+if __name__ == "__main__":
+    a2t = Assignment2Task()
+    a2t.run()
 
 
