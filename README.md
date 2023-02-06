@@ -90,7 +90,7 @@ Note: replace text with `<>` to actual values
 * For daily cadence schedule below command. As processed files are stored by date there is no problem of overwrite. 
 * _For PRODUCTION:_ `py assignment.Assignement2Task env=PROD format=csv`
 
-![assignment2_design.JPG](docs%2Fassignment1_design.JPG)
+![assignment2_design.JPG](docs%2Fassignment2_design.JPG)
 
 **Assignment 3: Minimum spanning tree**
 
