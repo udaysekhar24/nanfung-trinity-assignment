@@ -1,5 +1,3 @@
-from DoublyLinkedList import DoublyLinkedListNode as DLLNode
-
 ###
 # LRU Cache can be implemented using a dict(cache) and DoublyLinkedList(DLL)
 # methods:
@@ -18,16 +16,26 @@ from DoublyLinkedList import DoublyLinkedListNode as DLLNode
 ###
 
 
-class MyLRUCache:
-    # initialize capacity
+class DoublyLinkedListNode:
+    def __init__(self, key, value):
+        self.cache_key = key
+        self.content = value
+        self.next = None
+        self.prev = None
+
+
+class LRUCache:
+
+    # initialize capacity and DLL head and tail.
     def __init__(self, size: int):
         self.size = size
         self.cache = dict()
-        self.head = DLLNode(None, None)
-        self.tail = DLLNode(None, None)
+        self.head = DoublyLinkedListNode(None, None)
+        self.tail = DoublyLinkedListNode(None, None)
         self.head.next = self.tail
         self.tail.prev = self.head
 
+    # print the current state of LRUCache
     def __str__(self):
         return """ 
         LRU:
@@ -38,12 +46,14 @@ class MyLRUCache:
                    head=self.head.next.cache_key,
                    tail=self.tail.prev.cache_key)
 
+    # add node to the head of DLL.
     def add_node_to_head(self, dll_node):
         dll_node.next = self.head.next
         dll_node.next.prev = dll_node
         dll_node.prev = self.head
         self.head.next = dll_node
 
+    # delete given node
     def delete_node(self, dll_node):
         dll_node.prev.next = dll_node.next
         dll_node.next.prev = dll_node.prev
@@ -58,10 +68,10 @@ class MyLRUCache:
             # set accessed item to head
             self.delete_node(search_node)
             self.add_node_to_head(search_node)
-            print("After get({key})".format(key=search_key))
-            print(self)
+            # print("After get({key})".format(key=search_key))
+            # print(self)
             return result_content
-        print("*****Key:{key} not found*****".format(key=search_key))
+        # print("*****Key:{key} not found*****".format(key=search_key))
         return None
 
     def put(self, key, value):
@@ -74,7 +84,7 @@ class MyLRUCache:
             self.add_node_to_head(put_node)
         else:
             # create new node and set it to head
-            new_node = DLLNode(key, value)
+            new_node = DoublyLinkedListNode(key, value)
             self.cache[key] = new_node
 
             if len(self.cache) <= self.size:
@@ -85,17 +95,9 @@ class MyLRUCache:
                 self.cache.pop(self.tail.prev.cache_key)
                 self.delete_node(self.tail.prev)
                 self.add_node_to_head(new_node)
-        print("After put({key})".format(key=key))
-        print(self)
+        # print("After put({key})".format(key=key))
+        # print(self)
 
 
-if __name__ == "__main__":
-    lru = MyLRUCache(2)
-    lru.put(1, "A")
-    lru.put(2, "B")
-    lru.get(1)
-    lru.put(3, "C")
-    lru.put(1, "D")
-    lru.get(2)
 
 
