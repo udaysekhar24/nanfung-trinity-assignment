@@ -2,8 +2,9 @@ botocore
 boto3
 bs4
 pyrecord
-dotenv
+python-dotenv
 fsspec
 s3fs
 pandas
 pytest
+requests
